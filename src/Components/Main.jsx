@@ -3,16 +3,21 @@ import React, { useState } from "react";
 function Main() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [age, setAge] = useState("");
   const [firstNameinputBx, setFirstNameInputBx] = useState("");
   const [lastNameinputBx, setLastNameInputBx] = useState("");
+  const [ageinputBx, setAgeInputBx] = useState("");
 
   function createResume(e) {
     setFirstName(firstNameinputBx);
     setLastName(lastNameinputBx);
+    setAge(ageinputBx);
     setFirstName("");
     setLastName("");
-    console.log(firstName);
-    console.log(lastName);
+    setAge("");
+    console.log(firstNameinputBx);
+    console.log(lastNameinputBx);
+    console.log(ageinputBx);
     e.preventDefault();
   }
 
@@ -22,7 +27,9 @@ function Main() {
   function handleLastName(e) {
     setLastNameInputBx(e.target.value);
   }
-
+  function handleAge(e) {
+    setAgeInputBx(e.target.value);
+  }
   return (
     <form onSubmit={createResume}>
       <label>
@@ -42,8 +49,17 @@ function Main() {
           onChange={handleLastName}
           // onKeyDown={handleLastName}
         />
+        <br />
+        Age:
+        <input
+          type="number"
+          placeholder="Enter Last Name"
+          onChange={handleAge}
+          // onKeyDown={handleLastName}
+        />
       </label>
       <br />
+      <hr />
       <button>Submit</button>
     </form>
   );
