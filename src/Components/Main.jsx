@@ -15,9 +15,7 @@ function Main() {
     setFirstName("");
     setLastName("");
     setAge("");
-    console.log(firstNameinputBx);
-    console.log(lastNameinputBx);
-    console.log(ageinputBx);
+
     e.preventDefault();
   }
 
@@ -31,7 +29,7 @@ function Main() {
     setAgeInputBx(e.target.value);
   }
   return (
-    <form onSubmit={createResume}>
+    <form action="#" target="_blank" onSubmit={createResume}>
       <label>
         First Name:
         <input
@@ -57,10 +55,14 @@ function Main() {
           onChange={handleAge}
           // onKeyDown={handleLastName}
         />
+        <hr />
+        <button>submit</button>
+        {/* <button>
+          <a href="#" target="_blank">
+            submit
+          </a>
+        </button> */}
       </label>
-      <br />
-      <hr />
-      <button>Submit</button>
     </form>
   );
 }
