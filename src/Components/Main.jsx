@@ -10,7 +10,8 @@ function Main(props) {
     firstName: "",
     lastName: "",
     age: "",
-    address: ""
+    address: "",
+    links: [""]
   });
 
   // function createResume(e) {
@@ -26,20 +27,27 @@ function Main(props) {
   // }
 
   function handleFirstName(e) {
-    // setFirstNameInputBx(e.target.value);
     setUserDetails({ ...userDetails, firstName: e.target.value });
   }
   function handleLastName(e) {
-    // setLastNameInputBx(e.target.value);
     setUserDetails({ ...userDetails, lastName: e.target.value });
   }
   function handleAge(e) {
-    // setAgeInputBx(e.target.value);
     setUserDetails({ ...userDetails, age: e.target.value });
   }
   function handleAddress(e) {
-    // setAgeInputBx(e.target.value);
     setUserDetails({ ...userDetails, address: e.target.value });
+  }
+  function handlelink(e) {
+    // console.log(e.target.value);
+    setUserDetails({ ...userDetails, links: e.target.value });
+    // console.log(userDetails);
+  }
+  function AddLinks() {
+    setUserDetails((prevState) => ({
+      links: [...prevState, userDetails.links]
+    }));
+    console.log(userDetails.links);
   }
   // function resume(e) {
   //   console.log("clicked");
@@ -102,15 +110,21 @@ function Main(props) {
             onChange={handleAddress}
             // onKeyDown={handleLastName}
           />
+          <br />
+          Add links:
+          <input
+            type="text"
+            value={userDetails.links}
+            placeholder="Add link"
+            onChange={handlelink}
+          />
+          <button type="submit" onClick={AddLinks}>
+            +
+          </button>
           <hr />
           <button onClick={() => setIsResumeCreated(!isResumeCreated)}>
             submit
           </button>
-          {/* <button>
-          <a href="#" target="_blank">
-            submit
-          </a>
-        </button> */}
         </label>
       </div>
       <div>
