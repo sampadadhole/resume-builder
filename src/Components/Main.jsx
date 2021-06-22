@@ -11,7 +11,7 @@ function Main(props) {
     lastName: "",
     age: "",
     address: "",
-    links: [""]
+    links: []
   });
 
   // function createResume(e) {
@@ -40,13 +40,14 @@ function Main(props) {
   }
   function handlelink(e) {
     // console.log(e.target.value);
-    setUserDetails({ ...userDetails, links: e.target.value });
+    setUserDetails({
+      ...userDetails,
+      links: [...userDetails.links, e.target.value]
+    });
     // console.log(userDetails);
   }
   function AddLinks() {
-    setUserDetails((prevState) => ({
-      links: [...prevState, userDetails.links]
-    }));
+    setUserDetails({ ...userDetails, links: userDetails.links });
     console.log(userDetails.links);
   }
   // function resume(e) {
