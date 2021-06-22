@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import CreateResume from "./CreateResume";
 import Preview from "./Preview";
-// import { render } from "react-dom";
+import styled from "styled-components";
 
 function Main(props) {
   const { setResumeData } = props;
@@ -48,68 +49,84 @@ function Main(props) {
   //     console.log(isResumeCreated);
   //     return (
   //       <div>
-  //         <Preview />
+  //         <CreateResume />
   //       </div>
   //     );
   //   }
   //   e.preventDefault();
   // }
+
   return (
-    <div>
+    <Container>
       {isResumeCreated && (
-        <Preview
+        <CreateResume
           userDetails={userDetails}
           setUserDetails={setUserDetails}
           setResumeData={setResumeData}
         />
       )}
-      <label>
-        First Name:
-        <input
-          type="text"
-          value={userDetails.firstName}
-          placeholder="Enter First Name"
-          onChange={handleFirstName}
-          // onKeyDown={handleFirstName}
-        />
-        <br />
-        Last Name:
-        <input
-          type="text"
-          value={userDetails.lastName}
-          placeholder="Enter Last Name"
-          onChange={handleLastName}
-          // onKeyDown={handleLastName}
-        />
-        <br />
-        Age:
-        <input
-          type="number"
-          value={userDetails.age}
-          placeholder="Enter your age"
-          onChange={handleAge}
-          // onKeyDown={handleLastName}
-        />
-        <br />
-        Address:
-        <input
-          type="text"
-          value={userDetails.address}
-          placeholder="Enter Address"
-          onChange={handleAddress}
-          // onKeyDown={handleLastName}
-        />
-        <hr />
-        <button onClick={() => setIsResumeCreated(!isResumeCreated)}>
-          submit
-        </button>
-        {/* <button>
+      <div>
+        <label>
+          First Name:
+          <input
+            type="text"
+            value={userDetails.firstName}
+            placeholder="Enter First Name"
+            onChange={handleFirstName}
+            // onKeyDown={handleFirstName}
+          />
+          <br />
+          Last Name:
+          <input
+            type="text"
+            value={userDetails.lastName}
+            placeholder="Enter Last Name"
+            onChange={handleLastName}
+            // onKeyDown={handleLastName}
+          />
+          <br />
+          Age:
+          <input
+            type="number"
+            value={userDetails.age}
+            placeholder="Enter your age"
+            onChange={handleAge}
+            // onKeyDown={handleLastName}
+          />
+          <br />
+          Address:
+          <input
+            type="text"
+            value={userDetails.address}
+            placeholder="Enter Address"
+            onChange={handleAddress}
+            // onKeyDown={handleLastName}
+          />
+          <hr />
+          <button onClick={() => setIsResumeCreated(!isResumeCreated)}>
+            submit
+          </button>
+          {/* <button>
           <a href="#" target="_blank">
             submit
           </a>
         </button> */}
-      </label>
-    </div>
+        </label>
+      </div>
+      <div>
+        <Preview
+          userDetails={userDetails}
+          setUserDetails={setUserDetails}
+          setResumeData={setResumeData}
+        />
+      </div>
+    </Container>
   );
 }
 export default Main;
+
+const Container = styled.div`
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+`;
